@@ -3,13 +3,13 @@ extern crate image;
 
 use std::env;
 
-use termion::color::{Fg, Bg, Rgb, Reset, Color};
+use termion::color::{Fg, Bg, Rgb, Reset};
 use image::GenericImage;
 
 fn main() {
     if let Some(filename) = env::args().nth(1) {
         let image = image::open(&filename).unwrap();
-        let (width, height) = image.dimensions();
+        let (_, height) = image.dimensions();
         for y in 0..((height + 1) / 2) {
             for x in 0..image.width() {
                 let data = image.get_pixel(x, y*2).data;
