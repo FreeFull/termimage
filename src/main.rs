@@ -3,7 +3,7 @@ use std::env;
 use termion::color::{Bg, Fg, Reset, Rgb};
 
 fn main() {
-    if let Some(filename) = env::args().nth(1) {
+    if let Some(filename) = env::args_os().nth(1) {
         let image = image::open(&filename).unwrap();
         let (height, width) = image.dimensions();
         // Each row of characters in the terminal corresponds to two rows in the image.
